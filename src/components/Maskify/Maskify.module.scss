@@ -1,0 +1,23 @@
+.container {
+  background-color: #597081;
+  padding: 2rem 5rem;
+  border-radius: 2rem;
+  max-width: 520px;
+  margin: 1rem auto;
+  min-height: 280px;
+  > p {
+    margin-bottom: 1rem;
+  }
+}
+
+.container > input {
+  font-size: 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.3rem;
+  outline: none;
+  border: 1px solid #36494e;
+}
+
+.output {
+  margin: 1rem auto;
+}
