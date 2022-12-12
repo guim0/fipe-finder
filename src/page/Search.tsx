@@ -1,7 +1,3 @@
 export const Search = () => {
-  return <Main></Main>;
+  return <h1>Futura página de busca</h1>;
 };
-
-const Main = styled.main`
-  background-color: "#F9F6FC";
-`;
