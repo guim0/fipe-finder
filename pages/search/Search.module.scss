@@ -8,10 +8,16 @@
 }
 
 .modal {
-  padding: 2rem 4rem;
-  width: 100%;
   max-width: 540px;
+  width: 100%;
+  padding: 2rem 4rem;
   border-radius: 1rem;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 }

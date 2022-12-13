@@ -1,9 +1,6 @@
-import { Component } from "react";
-import App from ".";
-
 import "./styles.scss";
-// _app.js
-const MyApp = ({ Component }) => {
-  return <Component />;
-};
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+
 export default MyApp;
