@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mask } from "../../util/Mask";
+import { Mask } from "../../hooks/Mask";
 import styles from "./Maskify.module.scss";
 
 export const Maskify = () => {

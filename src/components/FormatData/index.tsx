@@ -1,4 +1,4 @@
-import { formatData } from "../../util/formatData";
+import { formatData } from "../../hooks/formatData";
 import styles from "./formatData.module.scss";
 
 const obj1 = {

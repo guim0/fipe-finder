@@ -1,0 +1,17 @@
+.container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #262626;
+}
+
+.modal {
+  padding: 2rem 4rem;
+  width: 100%;
+  max-width: 540px;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

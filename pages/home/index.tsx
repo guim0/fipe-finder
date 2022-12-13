@@ -1,9 +1,11 @@
 import "./Home.module.scss";
 import { UpdateData } from "../../src/components/FormatData";
 import { Maskify } from "../../src/components/Maskify";
-import { Modal } from "../../src/components/Modal";
+import { CheckUppercase } from "../../src/components/CheckUppercase";
 import { RickAndMorty } from "../../src/components/RickAndMorty";
+
 import Link from "next/link";
+import { Button } from "../../src/components/Button";
 
 export function Home() {
   return (
@@ -11,11 +13,9 @@ export function Home() {
       <Maskify />
       <UpdateData />
       <RickAndMorty />
-      <Modal title="Checando se primeira é verdadeiro" />
+      <CheckUppercase title="Checando se primeira é verdadeiro" />
 
-      <h1>
-        <Link href="/search"> Go on to search page</Link>
-      </h1>
+      <Button href="/search">Clique para ir a página de pesquisa</Button>
     </div>
   );
 }
