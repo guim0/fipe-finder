@@ -163,7 +163,7 @@ const SearchPage = ({ cars  })=>{
                             ]
                         }),
                         /*#__PURE__*/ jsx_runtime_.jsx(material_namespaceObject.Button, {
-                            disabled: !carYear,
+                            disabled: !year && !model,
                             color: "secondary",
                             variant: "contained",
                             onClick: handleSubmit,

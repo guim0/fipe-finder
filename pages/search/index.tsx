@@ -114,7 +114,7 @@ const SearchPage = ({ cars }) => {
           )}
 
           <Button
-            disabled={!carYear}
+            disabled={!year && !model}
             color="secondary"
             variant="contained"
             onClick={handleSubmit}
