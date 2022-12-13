@@ -90,7 +90,6 @@ const SearchPage = ({ cars  })=>{
     async function handleSubmit() {
         const data = await fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos/${model}/anos/${year}`);
         const json = await data.json();
-        console.log(json);
         router.push({
             pathname: "/result",
             query: {
