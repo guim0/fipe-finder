@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./RickAndMorty.module.scss";
 
 export const RickAndMorty = () => {
@@ -8,12 +9,12 @@ export const RickAndMorty = () => {
         Ja fiz um caso de estudo usando React-Query com esta api do rick and
         morty.
       </p>
-      <a
+      <Link
         href="https://github.com/guim0/RickAndMorty-ReactQuery"
         target="_blank"
       >
         Clique aqui para ir pra meu github
-      </a>
+      </Link>
     </main>
   );
 };
