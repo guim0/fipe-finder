@@ -3,8 +3,6 @@ import FormControl from "@mui/material/FormControl";
 import { Button, FormGroup, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect, useState } from "react";
 
-import { ButtonSubmit } from "../../src/components/Button/ButtonSubmit";
-
 type IModelCar = {
   nome: string;
   codigo: string;
@@ -41,32 +39,29 @@ export const getStaticProps = async () => {
     props: { cars: data },
   };
 };
-
+//@ts-ignore
 const SearchPage = ({ cars }) => {
   const [model, setModel] = useState("");
   const [brand, setBrand] = useState("");
-  const [carModal, setCarModal] = useState([]);
-
+  const [carModal, setCarModel] = useState([]);
+  const [carYear, setCarYear] = useState([]);
   useEffect(() => {
     if (!brand) return;
 
-    const fetchNewData = async () => {
+    const fetchCarDetails = async () => {
       const data = await fetch(
         `https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos`
       );
       const json = await data.json();
-      setCarModal(json.modelos);
+      setCarModel(json.modelos);
+      setCarYear(json.ano);
       return json;
     };
 
-    fetchNewData();
+    fetchCarDetails();
   }, [brand]);
   async function handleSubmit() {
-    if (!(brand && model)) return;
-
-    if (brand && model) {
-      console.log(brand, model);
-    }
+    console.log({});
   }
   return (
     <main className={styles.container}>
@@ -88,6 +83,19 @@ const SearchPage = ({ cars }) => {
 
           <FormControl disabled={carModal.length < 1}>
             <InputLabel id="car-model">Modelo</InputLabel>
+
+            <Select
+              labelId="car-model"
+              onChange={(e) => setModel(e.target.value as string)}
+            >
+              {carModal?.map((data: IModelCar) => (
+                <MenuItem value={data.codigo}>{data.nome}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl disabled={carYear.length < 1}>
+            <InputLabel id="car-model">Ano</InputLabel>
 
             <Select
               labelId="car-model"

@@ -48,7 +48,9 @@ export const UpdateData = () => {
           <p>
             this is the <b>NEW</b> object:
           </p>
-          <p>{JSON.stringify(formattedObj1)}</p>
+          <p
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(formattedObj1) }}
+          />
         </div>
       </section>
       <section>
@@ -57,10 +59,12 @@ export const UpdateData = () => {
           <p>
             this is the <b>OLD</b> object:
           </p>
-
-          <p>
-            {JSON.stringify(obj2)}, {JSON.stringify(obj2WithProblem)}
-          </p>
+          <span dangerouslySetInnerHTML={{ __html: JSON.stringify(obj2) }} />,
+          <span
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(obj2WithProblem),
+            }}
+          />
         </div>
 
         <div className={styles.objectComparisson}>

@@ -16,4 +16,12 @@
   border-radius: 0.3rem;
   background-color: #acadbc;
   color: #36494e;
+  @media only screen and (max-width: 745px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -3rem;
+
+    padding: 1rem 3rem;
+  }
 }

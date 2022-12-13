@@ -31,7 +31,16 @@
   > input {
     margin: 1rem 0;
     padding: 1rem 0.5rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border: 1px solid #36494e;
+  }
+
+  @media only screen and (max-width: 745px) {
+    max-width: 100%;
+    > h1,
+    p,
+    input {
+      max-width: 80%;
+    }
   }
 }
