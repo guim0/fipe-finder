@@ -390,6 +390,7 @@ const RickAndMorty = ()=>{
 
 
 
+
 function Home() {
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: "container",
@@ -399,6 +400,12 @@ function Home() {
             /*#__PURE__*/ jsx_runtime_.jsx(RickAndMorty, {}),
             /*#__PURE__*/ jsx_runtime_.jsx(Modal, {
                 title: "Checando se primeira \xe9 verdadeiro"
+            }),
+            /*#__PURE__*/ jsx_runtime_.jsx("h1", {
+                children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                    href: "/search",
+                    children: " Go on to search page"
+                })
             })
         ]
     });
