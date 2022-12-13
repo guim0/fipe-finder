@@ -2,32 +2,12 @@ import styles from "./Search.module.scss";
 import FormControl from "@mui/material/FormControl";
 import { Button, FormGroup, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 type IModelCar = {
   nome: string;
   codigo: string;
 };
-
-{
-  /*
-export async function getServerSideProps() {
-  const res = await fetch(
-    "https://parallelum.com.br/fipe/api/v1/carros/marcas"
-  );
-
-  const req = await res.json();
-
-  if (!req) {
-    return {
-      notFound: true,
-    };
-  }
-  return {
-    props: { req },
-  };
-}
-*/
-}
 
 export const getStaticProps = async () => {
   const res = await fetch(
@@ -43,25 +23,51 @@ export const getStaticProps = async () => {
 const SearchPage = ({ cars }) => {
   const [model, setModel] = useState("");
   const [brand, setBrand] = useState("");
-  const [carModal, setCarModel] = useState([]);
+  const [year, setYear] = useState("");
+  const [carModel, setCarModel] = useState([]);
   const [carYear, setCarYear] = useState([]);
+
+  const router = useRouter();
   useEffect(() => {
     if (!brand) return;
 
-    const fetchCarDetails = async () => {
+    const fetchCarModels = async () => {
       const data = await fetch(
         `https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos`
       );
       const json = await data.json();
+
       setCarModel(json.modelos);
-      setCarYear(json.ano);
       return json;
     };
 
-    fetchCarDetails();
-  }, [brand]);
+    const fetchModelYear = async () => {
+      const data = await fetch(
+        `https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos/${model}/anos`
+      );
+      const json = await data.json();
+
+      setCarYear(json);
+      return json;
+    };
+
+    fetchCarModels();
+    fetchModelYear();
+  }, [brand, model]);
   async function handleSubmit() {
-    console.log({});
+    const data = await fetch(
+      `https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos/${model}/anos/${year}`
+    );
+    const json = await data.json();
+    console.log(json);
+    router.push({
+      pathname: "/result",
+      query: {
+        name: json.Modelo,
+        year: json.AnoModelo,
+        value: json.Valor,
+      },
+    });
   }
   return (
     <main className={styles.container}>
@@ -80,34 +86,35 @@ const SearchPage = ({ cars }) => {
               ))}
             </Select>
           </FormControl>
-
-          <FormControl disabled={carModal.length < 1}>
+          <FormControl disabled={carModel.length < 1}>
             <InputLabel id="car-model">Modelo</InputLabel>
 
             <Select
               labelId="car-model"
               onChange={(e) => setModel(e.target.value as string)}
             >
-              {carModal?.map((data: IModelCar) => (
+              {carModel?.map((data: IModelCar) => (
                 <MenuItem value={data.codigo}>{data.nome}</MenuItem>
               ))}
             </Select>
           </FormControl>
+          {!(carYear.length < 1) && (
+            <FormControl disabled={carYear.length < 1}>
+              <InputLabel id="car-year">Ano</InputLabel>
 
-          <FormControl disabled={carYear.length < 1}>
-            <InputLabel id="car-model">Ano</InputLabel>
+              <Select
+                labelId="car-year"
+                onChange={(e) => setYear(e.target.value as string)}
+              >
+                {carYear?.map((data: IModelCar) => (
+                  <MenuItem value={data.codigo}>{data.nome}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          )}
 
-            <Select
-              labelId="car-model"
-              onChange={(e) => setModel(e.target.value as string)}
-            >
-              {carModal?.map((data: IModelCar) => (
-                <MenuItem value={data.codigo}>{data.nome}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
           <Button
-            disabled={!(brand && model)}
+            disabled={!carYear}
             color="secondary"
             variant="contained"
             onClick={handleSubmit}
