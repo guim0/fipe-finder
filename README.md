@@ -1,6 +1,9 @@
-## Olá! Este é o teste tecnico pedido pela companhia MobiAuto!
+## Olá! Use o Fipe finder para localizar a media Fipe do automovel que pretende comprar ou vender!
 
 A Página inicial é basicamente alguns exemplos de alguns hooks, na página de `/search` encontrará o formulário para fazer a busca do Fipe de um carro, dependendo do modelo que tenha colocado.
+
+
+API usada foi esta: [FIPE API HTTP REST by deividfortuna ](http://deividfortuna.github.io/fipe/)
 
 ### Para rodar: `yarn`
 
@@ -19,4 +22,4 @@ A Página inicial é basicamente alguns exemplos de alguns hooks, na página de 
 
 ## Deployed on Vercel:
 
-[!MobiAuto - Vercel](https://mobi-auto-woad.vercel.app/)
+[!MobiAuto - Vercel](https://mobi-auto-woad.vercel.app/search)
